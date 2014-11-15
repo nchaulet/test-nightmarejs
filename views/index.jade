@@ -1,0 +1,23 @@
+html
+  head
+    title Twenga crawler
+    link(href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', rel='stylesheet')
+  body
+    div.container
+        h1 Twenga crawler
+        table.table.table-striped
+            thead
+                tr
+                    td Title
+                    td Price
+                    td Stock
+                    td Url
+            tbody
+                each product in products
+                    tr
+                        td!= product.title
+                        td!= product.price
+                        td
+                            if product.stock
+                                span X
+                        td!= product.url
