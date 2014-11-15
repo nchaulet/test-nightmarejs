@@ -8,6 +8,18 @@ var crawler = new TwengaCrawler({
 
 var products = [];
 
+var crawlLock = true;
+
+crawler.crawl('http://www.twenga.fr/theiere.html')
+	.then(function(result) {
+		products = result;
+		crawlLock = false;
+	}, function(err) {
+		crawlLock = false;
+		console.log(err);
+	});
+
+
 var express = require('express')
 var app = express()
 
@@ -21,16 +33,6 @@ app.get('/', function (req, res) {
 	 });
 });
 
-var crawlLock = false;
-
-crawler.crawl('http://www.twenga.fr/theiere.html')
-	.then(function(result) {
-		products = result;
-		crawlLock = false;
-	}, function(err) {
-		crawlLock = false;
-		console.log(err);
-	});
 
 app.get('/crawl', function(req, res) {
 	if (crawlLock) {
@@ -53,11 +55,6 @@ app.get('/crawl', function(req, res) {
 
 app.get('/articles.json', function(req, res) {
 	res.send(products);
-
 });
 
-var server = app.listen(3000, function () {
-  var host = server.address().address
-  var port = server.address().port
-  console.log('Example app listening at http://%s:%s', host, port)
-})
+var server = app.listen(3000);

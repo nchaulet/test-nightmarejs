@@ -13,7 +13,6 @@ TwengaCrawler.prototype.crawl = function(url) {
 
 	var products = [];
 
-
 	new Nightmare()
 		.viewport(1200, 4000)
 		.useragent('Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36')
