@@ -71,8 +71,8 @@ TwengaCrawler.prototype.crawl = function(url, number) {
 	      var urlCrawlTimeout =  10000;
 
 	      var promises = products.map(function(product) {
-	      	// Crawl with a 40 second interval to avoid captcha
-	      	urlCrawlTimeout += 40 * 1000;
+	      	// Crawl with a 50 second interval to avoid captcha
+	      	urlCrawlTimeout += 50 * 1000;
 
 	      	return _this._crawlProductUrl(product, urlCrawlTimeout);
 	      });

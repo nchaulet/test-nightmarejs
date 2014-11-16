@@ -19,12 +19,6 @@ var Server = function(model) {
 	});
 
 	app.get('/crawl', function(req, res) {
-		if (crawlLock) {
-			return res.status(500).end();
-		}
-
-		crawlLock = true;
-
 		model.refresh();
 
 		res.status(204).end();
