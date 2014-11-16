@@ -12,12 +12,19 @@ html
                     td Price
                     td Stock
                     td Url
+                    td Photo
             tbody
                 each product in products
                     tr
                         td!= product.title
                         td!= product.price
-                        td
+                        td!=product.stock
                             if product.stock
-                                span X
-                        td!= product.url
+                                span.label.label-success En Stock
+                        td
+                            a(href=product.url) Lien
+                        td
+                            img(src=product.photo)
+        
+        h2 Crawl Screenshot
+        img(src='crawlresult.jpg', width='600')
