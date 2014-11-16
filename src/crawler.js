@@ -14,7 +14,7 @@ TwengaCrawler.PAGE_ELEMENT = {
 	RESULT_ELEMENTS: '#result li',
 	SHOP_LINK: '.btnG',
 	TITLE: '.clr9',
-	PRICE: '.price',
+	PRICE: '.price .unique',
 	STOCK: '.itDetails',
 	PHOTO: '.photo img'
 };
@@ -71,8 +71,8 @@ TwengaCrawler.prototype.crawl = function(url, number) {
 	      var urlCrawlTimeout =  10000;
 
 	      var promises = products.map(function(product) {
-	      	// Crawl with a 30 second interval to avoid captcha
-	      	urlCrawlTimeout += 30 * 1000;
+	      	// Crawl with a 40 second interval to avoid captcha
+	      	urlCrawlTimeout += 40 * 1000;
 
 	      	return _this._crawlProductUrl(product, urlCrawlTimeout);
 	      });
